@@ -94,3 +94,9 @@ fun D6_readCustomsData(fileName: String): List<List<GroupData>> {
     return groupList
 }
 
+fun D6_readCustomsData2(fileName: String): List<List<String>> {
+    return Files.readString(File(fileName).toPath())
+        .split("\n\n")
+        .map { it.lines().filter { it.isNotBlank() }}
+}
+

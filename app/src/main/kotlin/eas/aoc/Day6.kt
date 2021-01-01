@@ -10,4 +10,19 @@ fun processCustomsList(inputFile: String): List<Int> {
     }.toList()
 }
 
+fun processCustomsList_rev2(inputFile: String):Int {
+    val seatList = D6_readCustomsData2(inputFile)
+    return seatList.sumBy {
+        it.joinToString("").toSet().size }
+}
 
+fun processCustomsListPt2(inputFile: String): Int {
+    val seatList = D6_readCustomsData2(inputFile)
+
+    return seatList.sumBy { group ->
+        group.joinToString("")
+            .groupingBy {it}
+            .eachCount()
+            .count{ it.value == group.size }
+    }
+}

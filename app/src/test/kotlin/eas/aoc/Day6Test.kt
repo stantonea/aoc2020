@@ -11,15 +11,24 @@ class Day6Test {
     fun testDay6Pt1() {
         val file = test_file
         val answer = 11
-        val ans = processCustomsList(file)
-        assertEquals(answer, ans.sum())
+        val ans = processCustomsList_rev2(file)
+        assertEquals(answer, ans)
     }
 
     @Test
     fun testDay6AcutualPt1() {
         val file = actual_file
-        val ans = processCustomsList(file)
-        print("Day 6 Pt1 customs forms count ${ans.sum()}\n")
+        val actual = 6703
+        val ans = processCustomsList_rev2(file)
+        assertEquals(actual, ans)
+        print("Day 6 Pt1 customs forms count ${ans}\n")
+    }
+
+    @Test
+    fun testDay6ActualPt2() {
+        val file = actual_file
+        val ans = processCustomsListPt2(file)
+        println("Day 6 Pt2 customs forms count $ans")
     }
 
 
