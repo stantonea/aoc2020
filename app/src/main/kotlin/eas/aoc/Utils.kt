@@ -100,3 +100,41 @@ fun D6_readCustomsData2(fileName: String): List<List<String>> {
         .map { it.lines().filter { it.isNotBlank() }}
 }
 
+/**
+ * Sample input
+    light red bags contain 1 bright white bag, 2 muted yellow bags.
+    dark orange bags contain 3 bright white bags, 4 muted yellow bags.
+    bright white bags contain 1 shiny gold bag.
+    muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.
+    shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.
+    dark olive bags contain 3 faded blue bags, 4 dotted black bags.
+    vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
+    faded blue bags contain no other bags.
+    dotted black bags contain no other bags.
+ */
+fun D7_readBagDataPt1(fileName: String): Map<String, List<BagData>> {
+    val map = mutableMapOf<String, List<BagData>>()
+    Files.lines(File(fileName).toPath())
+        .forEach {l ->
+            val items = l.split("contain")
+            val bagName = items[0].split(" ").take(2).zipWithNext { a, b -> a+b }.first()
+            val internalBags = items[1].split(",")
+                .filter {it != " no other bags."}
+                .map {bag ->
+                    val baginfo = bag.trim().split(" ")
+                    BagData(baginfo[0].toInt(), baginfo[1] + baginfo[2])
+                }
+            map.put(bagName, internalBags)
+        }
+
+    return map
+}
+
+fun D8_readInstructions(fileName: String): List<OpCode> {
+    return Files.lines(File(fileName).toPath())
+        .filter {it.isNotEmpty()}
+        .map {
+            val items = it.split(" ")
+            OpCode(items[0], items[1].toInt())
+        }.toList()
+}
