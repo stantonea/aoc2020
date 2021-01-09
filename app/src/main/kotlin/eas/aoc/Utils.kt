@@ -10,7 +10,15 @@ fun String.isInteger():Boolean {
 
 fun importTextFileToInt (fileName: String): List<Int> {
     return Files.lines(File(fileName).toPath())
-        .map { x -> x.trim().toInt() }
+        .filter{it.isNotEmpty()}
+        .map { it.trim().toInt() }
+        .toList()
+}
+
+fun importTextFileToLong (fileName: String): List<Long> {
+    return Files.lines(File(fileName).toPath())
+        .filter{it.isNotEmpty()}
+        .map { it.trim().toLong() }
         .toList()
 }
 
