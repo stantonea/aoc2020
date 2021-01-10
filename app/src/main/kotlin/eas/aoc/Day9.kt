@@ -1,6 +1,7 @@
 package eas.aoc
 
 fun findNonConformingPt1(numbers: List<Long>, sampleSize: Int): List<Long> {
+    numbers.windowed(sampleSize + 1, 1, false)
     val ranges = mutableListOf<List<Long>>()
     ranges.add(numbers.subList(0, sampleSize))
     for(i in 1 until numbers.size-sampleSize+1) {
