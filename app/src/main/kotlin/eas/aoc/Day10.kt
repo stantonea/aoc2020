@@ -23,7 +23,7 @@ fun findJoltageDiffsPt1(joltages: MutableList<Int>): Int {
 fun findJoltageCombinationsPt2_B(adapters: List<Int>): Long {
     val adapterMap: MutableMap<Int,Long> = mutableMapOf(0 to 1L)
     val adaptersSorted = adapters.sorted()
-    adaptersSorted.sorted()
+    adaptersSorted
         .forEach{ adapter ->
             adapterMap[adapter] = (1..3).map { lookback ->
                 adapterMap.getOrDefault(adapter - lookback, 0)

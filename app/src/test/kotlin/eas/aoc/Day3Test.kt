@@ -27,12 +27,15 @@ class Day3Test {
     @Test
     fun testDay2ActualPt2() {
         val file = actual_file
+        val ans = 7812180000
         val oneOne = findValidTreeCount(file, 1, 1)
         val threeOne = findValidTreeCount(file, 3, 1)
         val fiveOne = findValidTreeCount(file, 5, 1)
         val sevenOne = findValidTreeCount(file, 7, 1)
         val oneTwo = findValidTreeCount(file, 1, 2)
-        print("Number of trees discovered pt 2: ${oneOne.toLong() * threeOne * fiveOne * sevenOne * oneTwo}\n")
+        val actualAnswer = oneOne.toLong() * threeOne * fiveOne * sevenOne * oneTwo
+        assertEquals(ans, actualAnswer)
+        print("Number of trees discovered pt 2: $actualAnswer\n")
     }
 
 

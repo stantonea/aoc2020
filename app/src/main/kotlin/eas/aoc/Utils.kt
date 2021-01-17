@@ -31,18 +31,10 @@ fun importPwData(fileName: String): List<PWPolicy> {
         .toList()
 }
 
-fun importTobogganData(fileName:String): List<List<Char>> {
-    var dat = mutableListOf<MutableList<Char>>()
-    var idx = 0
-
-    Files.lines(File(fileName).toPath())
-        .forEach { line ->
-            dat.add(mutableListOf())
-            line.chars().forEach { dat[idx].add(it.toChar()) }
-            idx++
-        }
-
-    return dat
+fun importCharList(fileName:String): List<MutableList<Char>> {
+    return Files.lines(File(fileName).toPath())
+        .filter{ it.isNotEmpty() }
+        .map{ it.toCharArray().toMutableList() }.toList()
 }
 
 fun readPassportData(fileName: String): List<Map<PPFields, String>> {

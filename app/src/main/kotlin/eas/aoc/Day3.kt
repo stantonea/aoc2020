@@ -4,7 +4,7 @@ package eas.aoc
 val tree = '#'
 
 fun findValidTreeCount(inputFile: String, xIncrement:Int = 3, yIncrement:Int = 1): Int {
-    val treeMap = importTobogganData(inputFile)
+    val treeMap = importCharList(inputFile)
 
     var treeTotal = 0
     val ylimit = treeMap.size  // limit on vertical rows
@@ -32,8 +32,4 @@ fun findValidTreeCount(inputFile: String, xIncrement:Int = 3, yIncrement:Int = 1
     }
 
     return treeTotal
-}
-
-fun yyy(inputFile: String): Int {
-    return 0
 }
