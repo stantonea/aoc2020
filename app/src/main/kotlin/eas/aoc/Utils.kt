@@ -138,3 +138,10 @@ fun D8_readInstructions(fileName: String): List<OpCode> {
             OpCode(items[0], items[1].toInt())
         }.toList()
 }
+
+fun D12_readCoordinates(fileName: String): List<Pair<Char, Int>> {
+    return Files.lines(File(fileName).toPath())
+        .filter { it.isNotEmpty() }
+        .map { Pair(it.first(), it.substring(1, it.length).toInt())}
+        .toList()
+}
